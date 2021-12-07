@@ -1,0 +1,48 @@
+Alright, now that you've watched the tutorial to do the hack, and still confused, you've come over to me, @HACKr69420. 
+Basically you click on the hack you want, for example, "global"
+Say you want the tokens, so you click on "addTokens.js"
+You see on these letters and numbers and symbols, your brain is telling you to just leave, that it's too complicated. It's really not tho
+You click on the copy symbol then in the blooket market, type "javascript:" and the stuff you copied in your google chrome search bar. 
+**MUST BE GOOGLE CHROME
+For the coin hack you would put "javascript:async function getName(authToken) {
+    const response = await fetch('https://api.blooket.com/api/users/verify-token?token=JWT+' + authToken);
+    const data = await response.json();
+
+    return data.name
+};
+
+async function addCurrencies() {
+    const tokens = Number(prompt('How many tokens do you want to add to your account? (500 daily)'));
+    const myToken = localStorage.token.split('JWT ')[1];
+
+    if (tokens > 500) {
+        alert('You can only add up to 500 tokens daily.')
+    }
+
+    const response = await fetch('https://api.blooket.com/api/users/add-rewards', {
+        method: "PUT",
+        headers: {
+            "referer": "https://www.blooket.com/",
+            "content-type": "application/json",
+            "authorization": localStorage.token
+        },
+        body: JSON.stringify({
+            addedTokens: tokens,
+            addedXp: 300,
+            name: await getName(myToken)
+        })
+    });
+
+    if (response.status == 200) {
+        alert(`${tokens} tokens and 300 XP added to your account!`);
+    } else {
+        alert('An error occured.');
+    };
+
+};
+
+addCurrencies();"
+
+
+
+Look at the comment I posted for a video tutorial
